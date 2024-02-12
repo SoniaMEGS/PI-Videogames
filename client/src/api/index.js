@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
+const API_URL_GENRES = import.meta.env.VITE_API_URL_GENRES;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const getVideogame = async (totalPages) => {
@@ -27,4 +28,21 @@ export const getVideogameByID = ({ id }) => {
     .get(`${API_URL}/${id}?key=${API_KEY}`)
     .then((res) => res.data)
     .catch((err) => console.log(err));
+};
+
+// export const getVideogameGenres = () => {
+//  return axios
+//    .get(`${API_URL_GENRES}?key=${API_KEY}`)
+//    .then((res) => res.data)
+//    .catch((err) => console.log(err));
+// };
+
+export const getVideogameGenres = async () => {
+  try {
+    const res = await axios.get(`${API_URL_GENRES}?key=${API_KEY}`);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };

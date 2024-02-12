@@ -1,9 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import Searcher from "./Searcher";
 import "../style/NavBar.css";
 
 const NavBar = () => {
+  const { pathname } = useLocation();
   return (
     <nav className="navBar">
       <ul className="navBar_list">
@@ -13,9 +14,8 @@ const NavBar = () => {
         <li>
           <NavLink to="/form">Create videogame</NavLink>
         </li>
-        {/* <li>Landing</li> */}
       </ul>
-      <Searcher />
+      {pathname === "/home" && <Searcher />}
     </nav>
   );
 };

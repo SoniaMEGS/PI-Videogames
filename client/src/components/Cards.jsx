@@ -6,7 +6,7 @@ import "../style/Cards.css";
 
 const Cards = (props) => {
   const { videogames } = props;
-  console.log(videogames);
+  //console.log(videogames);
 
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
   const [currentPage, setCurrentPage] = useState(1);
