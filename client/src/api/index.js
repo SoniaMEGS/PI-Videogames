@@ -1,20 +1,11 @@
-/* import axios from "axios";
-
-export const getVideogame = () => {
-  return axios
-    .get(
-      "https://api.rawg.io/api/games?key=098d344b066c48d8b677287c1fcc3151&page=1"
-    )
-    .then((res) => res.data)
-    .catch((err) => console.log(err));
-}; */
-
 import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const getVideogame = async (totalPages) => {
   const requests = [];
-  const baseUrl =
-    "https://api.rawg.io/api/games?key=098d344b066c48d8b677287c1fcc3151&page=";
+  const baseUrl = `${API_URL}?key=${API_KEY}&page=`;
 
   for (let page = 1; page <= totalPages; page++) {
     requests.push(axios.get(`${baseUrl}${page}`));
@@ -28,4 +19,12 @@ export const getVideogame = async (totalPages) => {
     console.error("Error fetching videogames:", error);
     return []; // Devolver un arreglo vacío en caso de error
   }
+};
+
+export const getVideogameByID = ({ id }) => {
+  //const baseUrl = `${API_URL}/${id}?key=${API_KEY}`;
+  return axios
+    .get(`${API_URL}/${id}?key=${API_KEY}`)
+    .then((res) => res.data)
+    .catch((err) => console.log(err));
 };

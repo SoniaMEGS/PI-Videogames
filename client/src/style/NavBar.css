@@ -1,0 +1,11 @@
+.navBar {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+  width: 100vw;
+}
+.navBar_list {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}

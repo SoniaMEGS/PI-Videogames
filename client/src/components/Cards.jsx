@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Card from "./Card";
 import Paginado from "./Paginated.jsx";
 import "../style/Cards.css";
@@ -17,13 +18,16 @@ const Cards = (props) => {
     <div>
       <div className="videogamesList">
         {videogames
-          ?.map(({ name, background_image, genres }) => (
-            <Card
-              key={name}
-              name={name}
-              background_image={background_image}
-              genres={genres.map((gen) => gen?.name).join(", ")}
-            />
+          ?.map(({ name, id, background_image, genres }) => (
+            <NavLink key={id} to={`/detail/${id}`}>
+              <Card
+                key={name}
+                id={id}
+                name={name}
+                background_image={background_image}
+                genres={genres.map((gen) => gen?.name).join(", ")}
+              />
+            </NavLink>
           ))
           .slice(firstIndex, lastIndex)}
       </div>
