@@ -1,0 +1,14 @@
+.paginated {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.paginated_list {
+  display: flex;
+  justify-content: space-evenly;
+}
+.paginated_list li {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
