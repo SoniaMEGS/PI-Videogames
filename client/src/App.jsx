@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector, connect } from "react-redux";
 import React from "react";
 import Searcher from "./components/Searcher";
 import Cards from "./components/Cards";
@@ -10,7 +10,9 @@ import "./App.css";
 
 function App() {
   const videogames = useSelector((state) => state.videogames);
+  const search = useSelector((state) => state.search);
   const loading = useSelector((state) => state.loading);
+  const filtering = useSelector((state) => state.filtering);
   const dispatch = useDispatch();
   //const [videogames, setVideogames] = useState([]);
 
@@ -23,13 +25,17 @@ function App() {
       dispatch(setLoading(false));
     };
     fetchVideogames();
-  }, []);
+  }, [filtering]);
 
   return (
     <div>
       <div className="app">
-        <Searcher />
-        {loading ? <Loader /> : <Cards videogames={videogames} />}
+        <Searcher videogames={videogames} />
+        {loading ? (
+          <Loader />
+        ) : (
+          <Cards videogames={filtering ? search : videogames} />
+        )}
       </div>
     </div>
   );
