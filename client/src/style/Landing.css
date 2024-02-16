@@ -1,0 +1,30 @@
+.landing {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing_img {
+  width: 20rem;
+  margin-bottom: 3rem;
+}
+
+.landing_button {
+  width: 15rem;
+  height: 6rem;
+  background-image: linear-gradient(to bottom, #a7b6c5, #b9ecc2);
+  border: 1px solid #73da8c;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: x-large;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition-property: border-color, background-color;
+  transition-duration: 0.3s;
+}
+.landing_button:hover {
+  border-color: #889cb0;
+  cursor: pointer;
+}

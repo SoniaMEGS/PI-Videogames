@@ -3,6 +3,7 @@ import {
   SET_LOADING,
   SET_SEARCH,
   SET_FILTERING,
+  SET_SORTING,
 } from "./types";
 
 export const setVideogames = (payload) => ({
@@ -20,5 +21,9 @@ export const setSearch = (payload) => ({
 
 export const setFiltering = (payload) => ({
   type: SET_FILTERING,
+  payload,
+});
+export const setSorting = (payload) => ({
+  type: SET_SORTING,
   payload,
 });

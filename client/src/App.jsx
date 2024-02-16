@@ -1,58 +1,23 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import React from "react";
-import Cards from "./components/Cards";
-import Loader from "./components/Loader.jsx";
+import { useEffect } from "react";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Details, Form, Landing, Home } from "./pages";
 import NavBar from "./components/NavBar.jsx";
-import DetailData from "./components/DetailData.jsx";
-import Form from "./components/Form.jsx";
-import Landing from "./components/Landing.jsx";
-import { getVideogame } from "./api/index";
-import { setVideogames, setLoading } from "./redux/actions.js";
 import "./App.css";
 
 function App() {
-  const videogames = useSelector((state) => state.videogames);
-  const search = useSelector((state) => state.search);
-  const loading = useSelector((state) => state.loading);
-  const filtering = useSelector((state) => state.filtering);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { pathname } = useLocation();
-
-  //Funcion que llama la api
-  useEffect(() => {
-    const fetchVideogames = async () => {
-      dispatch(setLoading(true));
-      const videogamesRes = await getVideogame(100);
-      dispatch(setVideogames(videogamesRes));
-      dispatch(setLoading(false));
-    };
-    fetchVideogames();
-  }, [filtering]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     navigate("/landing");
   }, []);
-
   return (
     <div>
       <div className="app">
         {pathname !== "/landing" && <NavBar />}
-
         <Routes>
-          <Route
-            path="/home"
-            element={
-              loading ? (
-                <Loader />
-              ) : (
-                <Cards videogames={filtering ? search : videogames} />
-              )
-            }
-          />
-          <Route path="/detail/:id" element={<DetailData />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/detail/:id" element={<Details />} />
           <Route path="/form" element={<Form />} />
           <Route path="/landing" element={<Landing />} />
         </Routes>

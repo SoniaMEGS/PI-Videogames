@@ -1,4 +1,4 @@
-import "../style/Card.css";
+import "../style/CardDetail.css";
 
 const CardDetail = ({ videogameDetails }) => {
   const {
@@ -13,40 +13,50 @@ const CardDetail = ({ videogameDetails }) => {
   } = videogameDetails;
 
   return (
-    <section id={id} className="cardContainer">
-      <div>
-        <img src={background_image} alt={name} />
-        <div>
-          <p>
-            <span>ID: </span>
-            {id}
-          </p>
-          <p>
-            <span>Name: </span>
-            {name}
-          </p>
-          <p>
-            <span>Rating: </span>
-            {rating}
-          </p>
-          <p>
-            <span>Released: </span>
-            {released}
-          </p>
-          <p>
-            <span>Genres: </span>
-            {genres?.map((gen) => gen?.name).join(", ")}
-          </p>
-          <p>
-            <span>Platforms: </span>
-            {platforms?.map((plat) => plat?.platform?.name).join(", ")}
-          </p>
+    <section id={id} className="cardDetail">
+      <div className="cardDetailContainer">
+        <div className="cardDetailContainer_p">
+          <figure className="cardDetailContainer_img">
+            <img
+              src={background_image}
+              alt={name}
+              className="cardDetailContainer_img-videogames"
+            />
+          </figure>
+          <article>
+            <p className="cardDetailContainer_p-text">
+              <span>ID: </span>
+              {id}
+            </p>
+            <p className="cardDetailContainer_p-text">
+              <span>Name: </span>
+              {name}
+            </p>
+            <p className="cardDetailContainer_p-text">
+              <span>Rating: </span>
+              {rating}
+            </p>
+            <p className="cardDetailContainer_p-text">
+              <span>Released: </span>
+              {released}
+            </p>
+            <p className="cardDetailContainer_p-text">
+              <span>Genres: </span>
+              {genres?.map((gen) => gen?.name).join(", ")}
+            </p>
+            <p className="cardDetailContainer_p-text">
+              <span>Platforms: </span>
+              {platforms?.map((plat) => plat?.platform?.name).join(", ")}
+            </p>
+          </article>
         </div>
+        <article className="cardDetailContainer__description">
+          <p className="cardDetailContainer_description-d">
+            <span>Description: </span>
+            {description_raw}
+          </p>
+        </article>
       </div>
-      <p>
-        <span>Description: </span>
-        {description_raw}
-      </p>
     </section>
   );
 };

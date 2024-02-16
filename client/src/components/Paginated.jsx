@@ -3,6 +3,10 @@ import "../style/Paginated.css";
 
 const Paginated = (props) => {
   const { videogamesPerPage, currentPage, setCurrentPage, videogames } = props;
+  // Verifica si videogames está definido y tiene contenido
+  // if (!videogames || videogames.length === 0) {
+  //   return null; // Renderiza null si no hay datos disponibles
+  // }
   const totalVideogames = videogames.length;
   const pageNumbers = [];
 
@@ -60,23 +64,33 @@ const Paginated = (props) => {
 
   return (
     <div className="paginated">
-      <button onClick={goToFirstPage}>First</button>
-      <button href="" onClick={goToPrevious}>
+      <button className="paginated_prev" onClick={goToFirstPage}>
+        First
+      </button>
+      <button className="paginated_prev" href="" onClick={goToPrevious}>
         Previous
       </button>
       <ul className="paginated_list">
         {pageNumbersToShow.map((noPage) => (
           <li key={noPage}>
-            <button href="" onClick={() => goToSpecific(noPage)}>
+            <button
+              className={`paginated_list-num${
+                currentPage === noPage ? "--active" : ""
+              }`}
+              href=""
+              onClick={() => goToSpecific(noPage)}
+            >
               {noPage}
             </button>
           </li>
         ))}
       </ul>
-      <button href="" onClick={goToNext}>
+      <button className="paginated_next" href="" onClick={goToNext}>
         Next
       </button>
-      <button onClick={goToLastPage}>Last</button>
+      <button className="paginated_prev" onClick={goToLastPage}>
+        Last
+      </button>
     </div>
   );
 };

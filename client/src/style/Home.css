@@ -1,0 +1,6 @@
+.searcherFilter {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}

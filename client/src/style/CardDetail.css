@@ -1,0 +1,55 @@
+.cardDetail {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.cardDetailContainer {
+  margin: auto;
+  width: 70%;
+  height: 90%;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 0.1rem solid #889cb0;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cardDetailContainer_p {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.cardDetailContainer_img {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 35rem;
+}
+.cardDetailContainer_img-videogames {
+  width: 100%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.cardDetailContainer_p-text {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  color: black;
+  font-size: 1.5rem;
+}
+.cardDetailContainer_p-text span {
+  font-weight: 600;
+}
+
+.cardDetailContainer_description-d {
+  margin-bottom: 1rem;
+  color: black;
+  font-size: 1.5rem;
+}
+.cardDetailContainer_description-d span {
+  font-weight: 600;
+}

@@ -1,8 +1,29 @@
-img {
-  width: 10rem;
-  margin: 0.5rem;
+.cardContainer {
+  height: 23.5rem;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 0.1rem solid #ffffff;
+  border-radius: 0.5rem;
+}
+.cardContainer:hover {
+  border: 0.1rem solid #889cb0;
+}
+.cardContainer_img {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.cardContainer_img-videogames {
+  width: 70%;
+  height: 13.5rem;
+  border-radius: 0.375rem;
+  object-fit: cover;
 }
 
-.cardContainer {
-  border: 0.1rem solid saddlebrown;
+.cardContainer_text {
+  color: black;
+  font-size: 1.4rem;
+}
+.cardContainer_text span {
+  font-weight: 600;
 }

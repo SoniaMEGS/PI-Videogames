@@ -1,0 +1,25 @@
+.filters {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  padding-left: 1rem;
+  border-width: 2px;
+}
+
+.filters_section {
+  backdrop-filter: blur(4px);
+  background-color: #ffffff5c;
+  margin-left: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.6rem;
+  outline: none;
+  border-width: 2px;
+  border-color: #ffffff;
+  transition-property: border-color, background-color;
+  transition-duration: 0.3s;
+}
+.filters_section:hover {
+  border-color: #73da8c;
+}

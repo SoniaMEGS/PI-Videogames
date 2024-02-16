@@ -1,17 +1,52 @@
+.container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 90%;
+}
 .newVideogameForm {
+  width: 80%;
+  margin: auto;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
   margin-left: 8rem;
   margin-right: 8rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 0.1rem solid #889cb0;
+  border-radius: 0.5rem;
+}
+.newVideogameForm_title {
+  display: flex;
+  margin-bottom: 2rem;
+}
+.newVideogameForm_title h2 {
+  padding-top: 2rem;
+  color: #33613e;
+}
+.newVideogameForm_title img {
+  width: 6rem;
+  margin-right: 2rem;
+}
+.newVideogameForm_label {
+  width: 100%;
+  display: flex;
 }
 .newVideogameForm > * {
   margin-top: 1rem;
 }
-.newVideogameForm_check {
+.newVideogameForm_label-p {
+  font-size: medium;
+  width: 8.17rem;
+  margin-right: 1.2rem;
+  font-weight: 600;
   display: flex;
 }
-.newVideogameForm_check > * {
+
+.newVideogameForm_check {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
@@ -20,7 +55,50 @@
 }
 .newVideogameForm_check span {
   display: flex;
+  margin-top: 0rem;
+  margin-left: 0rem;
+}
+.buttonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3rem;
 }
 .newVideogameForm_button {
   width: 15rem;
+  height: 3rem;
+  background-image: linear-gradient(to bottom, #a7b6c5, #b9ecc2);
+
+  border: 1px solid #73da8c;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: medium;
+  border-radius: 0.375rem;
+  transition-property: border-color, background-color;
+  transition-duration: 0.3s;
+}
+.newVideogameForm_button:disabled {
+  background-image: linear-gradient(to bottom, #b5b5b597, #747474bd);
+  color: #c8c8c8;
+  border: 1px solid #889cb0;
+}
+.errorMessage {
+  color: #33613e;
+}
+.newVideogameForm_label-input {
+  height: 2.4rem;
+  backdrop-filter: blur(4px);
+  background-color: #b9ecc28a;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 0.6rem;
+  outline: none;
+  border-width: 2px;
+  border-color: #ffffff;
+  transition-property: border-color, background-color;
+  transition-duration: 0.3s;
+}
+.newVideogameForm_label-input:hover {
+  border-color: #73da8c;
 }

@@ -1,4 +1,6 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+.app {
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to bottom, #b9ecc2, #a7b6c5);
+  overflow-y: auto;
 }

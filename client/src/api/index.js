@@ -30,13 +30,6 @@ export const getVideogameByID = ({ id }) => {
     .catch((err) => console.log(err));
 };
 
-// export const getVideogameGenres = () => {
-//  return axios
-//    .get(`${API_URL_GENRES}?key=${API_KEY}`)
-//    .then((res) => res.data)
-//    .catch((err) => console.log(err));
-// };
-
 export const getVideogameGenres = async () => {
   try {
     const res = await axios.get(`${API_URL_GENRES}?key=${API_KEY}`);
