@@ -14,6 +14,7 @@ const Filter = () => {
     orderRating: "",
   };
   const [filterInput, setFilterInput] = useState(initialFilterInput);
+  const [initialVideogames, setInitialVideogames] = useState([]);
   const {
     filteredVideogames,
     filterByGenre,
@@ -25,6 +26,12 @@ const Filter = () => {
     (key) => filterInput[key] === initialFilterInput[key]
   );
 
+  useEffect(() => {
+    setInitialVideogames(filteredVideogames);
+    // Aplicar filtros automáticamente al cargar la página
+    handleApplyFilter();
+  }, [filteredVideogames]);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFilterInput({
@@ -33,16 +40,7 @@ const Filter = () => {
     });
   };
 
-  const handleFilter = () => {
-    if (filterInput.orderName !== "")
-      orderByName("name", filterInput.orderName);
-    if (filterInput.orderRating !== "")
-      orderByRating("name", filterInput.orderRating);
-    if (filterInput.genre !== "") filterByGenre(filterInput.genre);
-    dispatch(setSearch(filteredVideogames));
-  };
-
-  useEffect(() => {
+  const handleApplyFilter = () => {
     if (!areEqual) {
       dispatch(setSorting(true));
       handleFilter();
@@ -50,7 +48,26 @@ const Filter = () => {
       resetFilter(); // Restablecer los filtros
       dispatch(setSorting(false));
     }
-  }, [filterInput, resetFilter, dispatch, areEqual]);
+  };
+
+  const handleFilter = () => {
+    let filteredResults = [...initialVideogames];
+    if (filterInput.orderName !== "")
+      filteredResults = orderByName(
+        filteredResults,
+        "name",
+        filterInput.orderName
+      );
+    if (filterInput.orderRating !== "")
+      filteredResults = orderByRating(
+        filteredResults,
+        "name",
+        filterInput.orderRating
+      );
+    if (filterInput.genre !== "")
+      filteredResults = filterByGenre(filteredResults, filterInput.genre);
+    dispatch(setSearch(filteredResults));
+  };
 
   return (
     <div className="filters">
@@ -108,6 +125,9 @@ const Filter = () => {
         <option value="">API</option>
         <option value="">Database</option>
       </select>
+      <button className="filters_button" onClick={handleApplyFilter}>
+        Aply
+      </button>
     </div>
   );
 };

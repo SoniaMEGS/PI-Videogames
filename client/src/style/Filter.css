@@ -23,3 +23,23 @@
 .filters_section:hover {
   border-color: #73da8c;
 }
+
+.filters_button {
+  width: 8rem;
+  height: 3rem;
+  background-image: linear-gradient(to bottom, #a7b6c5, #b9ecc2);
+  border: 2px solid #ffffff;
+  color: #33613e;
+  font-weight: 800;
+  font-size: medium;
+  border-radius: 0.6rem;
+  margin-left: 2rem;
+  transition-property: border-color, background-color;
+  transition-duration: 0.3s;
+}
+
+.filters_button:hover {
+  background-image: linear-gradient(to bottom, #76818b, #95be9d);
+  border: 2px solid #33613e;
+  color: #ffffff;
+}

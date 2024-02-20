@@ -21,7 +21,7 @@ const Home = () => {
   useEffect(() => {
     const fetchVideogames = async () => {
       dispatch(setLoading(true));
-      const videogamesRes = await getVideogame(2);
+      const videogamesRes = await getVideogame(5);
       dispatch(setVideogames(videogamesRes));
       dispatch(setLoading(false));
     };

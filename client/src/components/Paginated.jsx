@@ -3,10 +3,7 @@ import "../style/Paginated.css";
 
 const Paginated = (props) => {
   const { videogamesPerPage, currentPage, setCurrentPage, videogames } = props;
-  // Verifica si videogames está definido y tiene contenido
-  // if (!videogames || videogames.length === 0) {
-  //   return null; // Renderiza null si no hay datos disponibles
-  // }
+
   const totalVideogames = videogames.length;
   const pageNumbers = [];
 
@@ -35,7 +32,7 @@ const Paginated = (props) => {
 
   // Función para obtener los números de página a mostrar en la paginación
   const getPageNumbersToShow = () => {
-    const maxPageButtons = 12; // Máximo número de botones de página a mostrar
+    const maxPageButtons = 4; // Máximo número de botones de página a mostrar
     const halfMaxButtons = Math.floor(maxPageButtons / 2);
 
     let startPage = currentPage - halfMaxButtons;
