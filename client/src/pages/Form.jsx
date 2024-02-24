@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { createVideogame } from "../api/index.js";
 import validation from "../components/validations.js";
 import useGenres from "../hooks/useGenres.js";
 import usePlatforms from "../hooks/usePlatforms.js";
@@ -57,29 +58,23 @@ const Form = () => {
 
   const generateNewVideogame = (values) => {
     const newVideogame = {
-      id: 0,
       name: "",
       background_image: "",
-      description_raw: "",
+      description: "",
       rating: "",
       released: "",
       platforms: "",
       genres: "",
     };
-    // Calculamos el ID del nuevo Videogames añadiendo 1 a la
-    // cantidad total de Videogames del estado
-    const videogamesId = videogames.length + 1;
     // Creamos nuestro nuevo Videogames con los valores del form
     const { name, image, description, rating, released, platforms, genres } =
       values;
     // Asignamos la lista de platforms u genres pero en String al nuevo videogame
     const videogamePlatforms = platforms.join(", ");
     const videogameGenres = genres.join(", ");
-    // Asignamos el ID a nuestro nuevo videogame.
-    newVideogame.id = videogamesId;
     newVideogame.name = name;
     newVideogame.background_image = image;
-    newVideogame.description_raw = description;
+    newVideogame.description = description;
     newVideogame.rating = rating;
     newVideogame.released = released;
     newVideogame.platforms = videogamePlatforms;
@@ -96,8 +91,9 @@ const Form = () => {
     console.log(newVideogame);
     // Añadimos nuestro nuevo videogame al array clon de videogames del state.
     videogamesRes.push(newVideogame);
+    createVideogame(newVideogame);
     // Restablece los valores del formulario a los valores iniciales
-    setVideogameData(formValues);
+    //setVideogameData(formValues);
   };
 
   return (

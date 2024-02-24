@@ -3,6 +3,7 @@ import { useState, useEffect, useMemo } from "react";
 
 const usePlatforms = () => {
   const videogames = useSelector((state) => state.videogames);
+  console.log(videogames);
   const [platformsList, setPlatformsList] = useState([]);
 
   useEffect(() => {
@@ -10,7 +11,9 @@ const usePlatforms = () => {
       const platformsArray = [
         ...new Set(
           videogames.flatMap((element) =>
-            element.platforms.map((elm) => elm.platform.name)
+            isNaN(element.id)
+              ? element.platforms.map((elm) => elm.platform)
+              : element.platforms.map((elm) => elm.platform.name)
           )
         ),
       ];

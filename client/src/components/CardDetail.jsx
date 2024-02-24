@@ -6,7 +6,7 @@ const CardDetail = ({ videogameDetails }) => {
     name,
     background_image,
     platforms,
-    description_raw,
+    description,
     released,
     rating,
     genres,
@@ -53,7 +53,7 @@ const CardDetail = ({ videogameDetails }) => {
         <article className="cardDetailContainer__description">
           <p className="cardDetailContainer_description-d">
             <span>Description: </span>
-            {description_raw}
+            {description}
           </p>
         </article>
       </div>

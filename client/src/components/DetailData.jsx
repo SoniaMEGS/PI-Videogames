@@ -20,11 +20,11 @@ const DetailData = () => {
         if (videogamesRes.id) {
           setVideogameDetails(videogamesRes);
         } else {
-          window.alert("No hay juego con ese nombre");
+          console.log("ERROR");
         }
       } catch (error) {
         console.log(error);
-        window.alert("No hay juego con ese nombre");
+        console.log("ERROR");
       }
       dispatch(setLoading(false));
     };

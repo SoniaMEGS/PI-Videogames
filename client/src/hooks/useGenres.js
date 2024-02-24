@@ -1,24 +1,18 @@
-import React from "react";
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { getVideogameGenres } from "../api/index.js";
 
 const useGenres = () => {
-  const [genresList, setGenresList] = React.useState([]);
+  const [genresList, setGenresList] = useState([]);
 
   useEffect(() => {
     async function fetchGenres() {
-      try {
-        const genres = await getVideogameGenres();
-        //console.log(genres);
-        if (genres.count) {
-          const allGenres = genres?.results?.map((element) => element?.name);
-          setGenresList(allGenres);
-        } else {
-          window.alert("Error");
-        }
-      } catch (error) {
-        //window.alert("Error al obtener los géneros");
-        console.error(error);
+      const genres = await getVideogameGenres();
+      //console.log(genres);
+      if (genres.length) {
+        const allGenres = genres?.map((element) => element?.name);
+        setGenresList(allGenres);
+      } else {
+        console.log("ERROR");
       }
     }
     fetchGenres();

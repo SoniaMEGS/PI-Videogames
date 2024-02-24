@@ -25,7 +25,11 @@ const Cards = (props) => {
                 id={id}
                 name={name}
                 background_image={background_image}
-                genres={genres.map((gen) => gen?.name).join(", ")}
+                genres={
+                  isNaN(id) // Verifica si 'id' no es un número
+                    ? genres.join(", ") // Si no es un número, usa 'genres.join(", ")'
+                    : genres.map((gen) => gen?.name).join(", ") // Si es un número, usa 'genres.map((gen) => gen?.name).join(", ")'
+                }
               />
             </NavLink>
           ))

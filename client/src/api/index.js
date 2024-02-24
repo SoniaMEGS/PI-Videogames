@@ -1,20 +1,12 @@
 import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
-const API_URL_GENRES = import.meta.env.VITE_API_URL_GENRES;
-const API_KEY = import.meta.env.VITE_API_KEY;
 
-export const getVideogame = async (totalPages) => {
-  const requests = [];
-  const baseUrl = `${API_URL}?key=${API_KEY}&page=`;
-
-  for (let page = 1; page <= totalPages; page++) {
-    requests.push(axios.get(`${baseUrl}${page}`));
-  }
-
+export const getVideogame = async () => {
   try {
-    const responses = await Promise.all(requests);
-    const videogames = responses.flatMap((res) => res.data.results);
+    const response = await axios.get(`${API_URL}/videogames`);
+    console.log("RESPONSE", response);
+    const videogames = await response.data;
     return videogames;
   } catch (error) {
     console.error("Error fetching videogames:", error);
@@ -22,20 +14,52 @@ export const getVideogame = async (totalPages) => {
   }
 };
 
-export const getVideogameByID = ({ id }) => {
-  //const baseUrl = `${API_URL}/${id}?key=${API_KEY}`;
-  return axios
-    .get(`${API_URL}/${id}?key=${API_KEY}`)
-    .then((res) => res.data)
-    .catch((err) => console.log(err));
+export const getVideogameByID = async ({ id }) => {
+  try {
+    const response = await axios.get(`${API_URL}/videogames/${id}`);
+    console.log("RESPONSE", response);
+    const videogame = await response.data;
+    return videogame;
+  } catch (error) {
+    console.error("Error fetching videogame:", error);
+    return []; // Devolver un arreglo vacío en caso de error
+  }
 };
 
 export const getVideogameGenres = async () => {
   try {
-    const res = await axios.get(`${API_URL_GENRES}?key=${API_KEY}`);
-    return res.data;
+    const res = await axios.get(`${API_URL}/genres`);
+    const genres = await res.data;
+    return genres;
   } catch (error) {
     console.log(error);
-    throw error;
+    return [];
+  }
+};
+
+export const createVideogame = async (videogame) => {
+  console.log("VIDEOGAME_IN_POST", videogame);
+  try {
+    const { data } = await axios.post(
+      `${API_URL}/videogames`,
+      {
+        name: videogame.name,
+        background_image: videogame.background_image,
+        description: videogame.description,
+        rating: videogame.rating,
+        released: videogame.released,
+        platforms: videogame.platforms,
+        genres: videogame.genres,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    data === null ? console.log("ERROR") : console.log(data);
+  } catch (error) {
+    console.log(error);
+    return console.log("ERROR");
   }
 };
