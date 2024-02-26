@@ -11,6 +11,7 @@ const Filter = () => {
   const initialFilterInput = {
     orderName: "",
     genre: "",
+    origin: "",
     orderRating: "",
   };
   const [filterInput, setFilterInput] = useState(initialFilterInput);
@@ -18,6 +19,7 @@ const Filter = () => {
   const {
     filteredVideogames,
     filterByGenre,
+    filterByOrigin,
     orderByName,
     orderByRating,
     resetFilter,
@@ -66,6 +68,8 @@ const Filter = () => {
       );
     if (filterInput.genre !== "")
       filteredResults = filterByGenre(filteredResults, filterInput.genre);
+    if (filterInput.origin !== "")
+      filteredResults = filterByOrigin(filteredResults, filterInput.origin);
     dispatch(setSearch(filteredResults));
   };
 
@@ -119,11 +123,14 @@ const Filter = () => {
         className="filters_section"
         name="origin"
         id="origin"
-        // onChange={handleInputChange}
+        value={filterInput.origin}
+        onChange={handleInputChange}
       >
-        <option value="">Origin</option>
-        <option value="">API</option>
-        <option value="">Database</option>
+        <option key="none" value="">
+          Origin
+        </option>
+        <option value="API">API</option>
+        <option value="Database">Database</option>
       </select>
       <button className="filters_button" onClick={handleApplyFilter}>
         Aply

@@ -26,12 +26,27 @@ const useVideogameFilter = () => {
     }
     return videogames.filter((element) => {
       // Filtra los videojuegos por el género seleccionado
-      return (
-        element.genres &&
-        element.genres.some((g) =>
-          g.name.toLowerCase().includes(genre.toLowerCase())
-        )
-      );
+      return isNaN(element.id)
+        ? element.genres?.includes(genre)
+        : element.genres &&
+            element.genres?.some((g) =>
+              g.name.toLowerCase().includes(genre.toLowerCase())
+            );
+    });
+  };
+
+  const filterByOrigin = (videogames, origin) => {
+    // Función para filtrar los videojuegos por género
+    if (origin === "none") {
+      return videogames; // Retorna todos los videojuegos si no se selecciona ningún género
+    }
+    return videogames.filter((element) => {
+      // Filtra los videojuegos por el género seleccionado
+      if (origin == "API") {
+        return !isNaN(element.id);
+      } else if (origin == "Database") {
+        return isNaN(element.id);
+      }
     });
   };
 
@@ -79,6 +94,7 @@ const useVideogameFilter = () => {
     // Retorna las funciones y estados necesarios para filtrar y ordenar los videojuegos
     filteredVideogames,
     filterByGenre,
+    filterByOrigin,
     orderByName,
     orderByRating,
     resetFilter,

@@ -11,7 +11,6 @@ const CardDetail = ({ videogameDetails }) => {
     rating,
     genres,
   } = videogameDetails;
-
   return (
     <section id={id} className="cardDetail">
       <div className="cardDetailContainer">
@@ -38,15 +37,19 @@ const CardDetail = ({ videogameDetails }) => {
             </p>
             <p className="cardDetailContainer_p-text">
               <span>Released: </span>
-              {released}
+              {isNaN(id) ? released?.split("T")[0] : released}
             </p>
             <p className="cardDetailContainer_p-text">
               <span>Genres: </span>
-              {genres?.map((gen) => gen?.name).join(", ")}
+              {isNaN(id)
+                ? genres?.join(", ")
+                : genres?.map((gen) => gen?.name).join(", ")}
             </p>
             <p className="cardDetailContainer_p-text">
               <span>Platforms: </span>
-              {platforms?.map((plat) => plat?.platform?.name).join(", ")}
+              {isNaN(id)
+                ? platforms?.join(", ")
+                : platforms?.map((plat) => plat?.platform?.name).join(", ")}
             </p>
           </article>
         </div>

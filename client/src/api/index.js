@@ -5,7 +5,6 @@ const API_URL = import.meta.env.VITE_API_URL;
 export const getVideogame = async () => {
   try {
     const response = await axios.get(`${API_URL}/videogames`);
-    console.log("RESPONSE", response);
     const videogames = await response.data;
     return videogames;
   } catch (error) {
@@ -17,7 +16,6 @@ export const getVideogame = async () => {
 export const getVideogameByID = async ({ id }) => {
   try {
     const response = await axios.get(`${API_URL}/videogames/${id}`);
-    console.log("RESPONSE", response);
     const videogame = await response.data;
     return videogame;
   } catch (error) {
