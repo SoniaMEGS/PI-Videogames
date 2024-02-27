@@ -3,7 +3,6 @@ import { useState, useEffect, useMemo } from "react";
 
 const usePlatforms = () => {
   const videogames = useSelector((state) => state.videogames);
-  console.log(videogames);
   const [platformsList, setPlatformsList] = useState([]);
 
   useEffect(() => {
@@ -24,7 +23,7 @@ const usePlatforms = () => {
     fetchPlatforms();
   }, []);
 
-  // Utilizamos useMemo para memoizar la lista de temperamentos
+  // Utilizamos useMemo para memoizar la lista de Platforms
   const memoizedPlatforms = useMemo(() => platformsList, [platformsList]);
 
   return memoizedPlatforms;

@@ -30,7 +30,3 @@ async function getVideogameID(req, res) {
 }
 
 module.exports = getVideogameID;
-// let id = "e0e6945d-74bd-44bd-b9e3-2493e275b3f0";
-// let idnum = "8";
-// const isNotANumber = !isNaN(idnum);
-// console.log(isNotANumber);

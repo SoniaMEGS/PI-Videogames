@@ -18,7 +18,7 @@ const useGenres = () => {
     fetchGenres();
   }, []);
 
-  // Utilizamos useMemo para memoizar la lista de temperamentos
+  // Utilizamos useMemo para memoizar la lista de Genres
   const memoizedGenres = useMemo(() => genresList, [genresList]);
 
   return memoizedGenres;

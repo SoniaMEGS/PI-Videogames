@@ -22,7 +22,6 @@ const Form = () => {
   };
   const [videogameData, setVideogameData] = React.useState(formValues);
   const [errors, setErrors] = React.useState(formValues);
-  //const [newVideogames, setNewVideogames] = React.useState([]);
 
   const handleChange = (event) => {
     const { value, name } = event.target;
@@ -53,7 +52,6 @@ const Form = () => {
         [name]: value,
       })
     );
-    //console.log(videogameData);
   };
 
   const generateNewVideogame = (values) => {
@@ -66,10 +64,8 @@ const Form = () => {
       platforms: "",
       genres: "",
     };
-    // Creamos nuestro nuevo Videogames con los valores del form
     const { name, image, description, rating, released, platforms, genres } =
       values;
-    // Asignamos la lista de platforms u genres pero en String al nuevo videogame
     const videogamePlatforms = platforms.join(", ");
     const videogameGenres = genres.join(", ");
     newVideogame.name = name;
@@ -85,15 +81,13 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(videogameData);
     const videogamesRes = [...videogames];
     const newVideogame = generateNewVideogame(videogameData);
-    console.log(newVideogame);
     // Añadimos nuestro nuevo videogame al array clon de videogames del state.
     videogamesRes.push(newVideogame);
     createVideogame(newVideogame);
     // Restablece los valores del formulario a los valores iniciales
-    //setVideogameData(formValues);
+    setVideogameData(formValues);
   };
 
   return (
@@ -189,10 +183,10 @@ const Form = () => {
                 <input
                   type="checkbox"
                   id={`option${index}`}
-                  name="platforms" // Cambiamos el valor del atributo name a "platforms"
+                  name="platforms"
                   value={item}
-                  checked={videogameData.platforms.includes(item)} // Utilizamos videogameData.platforms para verificar si el temperamento está seleccionado
-                  onChange={handleChange} // Usamos la misma función handleChange para manejar los cambios
+                  checked={videogameData.platforms.includes(item)}
+                  onChange={handleChange}
                 />
                 <label htmlFor={`option${index}`}>{item}</label>
               </div>
@@ -207,10 +201,10 @@ const Form = () => {
                 <input
                   type="checkbox"
                   id={`option${index}`}
-                  name="genres" // Cambiamos el valor del atributo name a "genres"
+                  name="genres"
                   value={item}
-                  checked={videogameData.genres.includes(item)} // Utilizamos videogameData.genres para verificar si el temperamento está seleccionado
-                  onChange={handleChange} // Usamos la misma función handleChange para manejar los cambios
+                  checked={videogameData.genres.includes(item)}
+                  onChange={handleChange}
                 />
                 <label htmlFor={`option${index}`}>{item}</label>
               </div>

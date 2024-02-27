@@ -24,6 +24,17 @@ export const getVideogameByID = async ({ id }) => {
   }
 };
 
+export const getVideogameByName = async (name) => {
+  try {
+    const response = await axios.get(`${API_URL}/videogames_name?name=${name}`);
+    const videogame = await response.data;
+    return videogame;
+  } catch (error) {
+    console.error("Error fetching videogame:", error);
+    return []; // Devolver un arreglo vacío en caso de error
+  }
+};
+
 export const getVideogameGenres = async () => {
   try {
     const res = await axios.get(`${API_URL}/genres`);
@@ -36,7 +47,6 @@ export const getVideogameGenres = async () => {
 };
 
 export const createVideogame = async (videogame) => {
-  console.log("VIDEOGAME_IN_POST", videogame);
   try {
     const { data } = await axios.post(
       `${API_URL}/videogames`,
@@ -55,9 +65,8 @@ export const createVideogame = async (videogame) => {
         },
       }
     );
-    data === null ? console.log("ERROR") : console.log(data);
   } catch (error) {
-    console.log(error);
-    return console.log("ERROR");
+    let men = new Error("This video game already exists.");
+    return alert(men.message);
   }
 };

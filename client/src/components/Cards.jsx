@@ -6,7 +6,6 @@ import "../style/Cards.css";
 
 const Cards = (props) => {
   const { videogames } = props;
-  //console.log(videogames);
 
   const [videogamesPerPage, setVideogamesPerPage] = useState(15);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,9 +25,9 @@ const Cards = (props) => {
                 name={name}
                 background_image={background_image}
                 genres={
-                  isNaN(id) // Verifica si 'id' no es un número
-                    ? genres.join(", ") // Si no es un número, usa 'genres.join(", ")'
-                    : genres.map((gen) => gen?.name).join(", ") // Si es un número, usa 'genres.map((gen) => gen?.name).join(", ")'
+                  isNaN(id)
+                    ? genres.join(", ")
+                    : genres.map((gen) => gen?.name).join(", ")
                 }
               />
             </NavLink>

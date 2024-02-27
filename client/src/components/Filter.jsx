@@ -30,7 +30,6 @@ const Filter = () => {
 
   useEffect(() => {
     setInitialVideogames(filteredVideogames);
-    // Aplicar filtros automáticamente al cargar la página
     handleApplyFilter();
   }, [filteredVideogames]);
 

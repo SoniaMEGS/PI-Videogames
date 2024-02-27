@@ -32,7 +32,7 @@ const Paginated = (props) => {
 
   // Función para obtener los números de página a mostrar en la paginación
   const getPageNumbersToShow = () => {
-    const maxPageButtons = 4; // Máximo número de botones de página a mostrar
+    const maxPageButtons = 4;
     const halfMaxButtons = Math.floor(maxPageButtons / 2);
 
     let startPage = currentPage - halfMaxButtons;

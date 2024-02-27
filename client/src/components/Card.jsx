@@ -3,7 +3,6 @@ import "../style/Card.css";
 
 const Card = (props) => {
   const { name, background_image, genres } = props;
-  //console.log(genres);
   return (
     <article id={name} className="cardContainer">
       <div className="cardContainer_img">

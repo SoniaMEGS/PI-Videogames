@@ -24,8 +24,9 @@ async function getNameVideoGame(req, res) {
 
     const { data } = await axios(`${URL_NAME}?search=${name}&key=${API_KEY}`);
     const videogamesByNameApi = data.results;
-    const videogamesByNameApiDB =
-      videogamesByNameDB.concat(videogamesByNameApi);
+    const videogamesByNameApiDB = videogamesByNameDB
+      .concat(videogamesByNameApi)
+      .slice(0, 15);
 
     return res.status(200).json(videogamesByNameApiDB);
   } catch (error) {

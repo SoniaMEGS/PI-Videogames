@@ -9,7 +9,7 @@ const router = Router();
 
 router.get("/videogames", getVideoGames);
 router.get("/videogames/:id", getVideogameID);
-router.get("/videogames_name/", getVideogameName);
+router.get("/videogames_name", getVideogameName);
 router.get("/genres", getGenres);
 router.post("/videogames", postVideoGame);
 

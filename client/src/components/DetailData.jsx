@@ -11,7 +11,6 @@ const DetailData = () => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.loading);
   let { id } = useParams();
-  //console.log()
   useEffect(() => {
     const fetchVideogameDetails = async () => {
       dispatch(setLoading(true));
