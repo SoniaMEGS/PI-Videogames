@@ -102,3 +102,9 @@
 .newVideogameForm_label-input:hover {
   border-color: #73da8c;
 }
+
+.newVideogameForm_note {
+  margin-top: 2rem;
+  color: #33613e;
+  font-weight: 500;
+}

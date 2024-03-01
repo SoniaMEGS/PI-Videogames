@@ -17,7 +17,9 @@ const usePlatforms = () => {
         ),
       ];
 
-      setPlatformsList(platformsArray);
+      setPlatformsList(
+        platformsArray.sort((a, b) => (a < b ? -1 : a > b ? 1 : 0))
+      );
     };
 
     fetchPlatforms();

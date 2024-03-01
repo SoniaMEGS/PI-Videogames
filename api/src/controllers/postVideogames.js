@@ -11,22 +11,10 @@ async function postVideoGame(req, res) {
 
     const platformsArray = req.body.platforms.split(", ");
     const genresArray = req.body.genres.split(", ");
-    console.log("GENRES_STRING", genresArray);
-
-    // Crea géneros y plataformas si no existen, y asocia al videojuego
-    const createdGenres = genresArray.map(async (genre) => {
-      await generes.findOrCreate({
-        where: {
-          name: genre,
-        },
-      });
-    });
-
-    await Promise.all(createdGenres);
 
     const { name, description, background_image, released, rating } = req.body;
 
-    const [createdGame, created] = await videogame.findOrCreate({
+    const [createdGame] = await videogame.findOrCreate({
       where: {
         name: name,
         description: description,
@@ -37,10 +25,16 @@ async function postVideoGame(req, res) {
       },
     });
 
-    if (!created) {
-      return res.status(400).send("This video game already exists.");
-    }
-    console.log("VIDEO::", createdGame);
+    // Asocia al videojuego
+    const associationGenres = genresArray.map(async (genre) => {
+      await generes.findOrCreate({
+        where: {
+          name: genre,
+        },
+      });
+    });
+
+    await Promise.all(associationGenres);
 
     const generesInstances = await generes.findAll({
       where: {
@@ -52,6 +46,7 @@ async function postVideoGame(req, res) {
 
     await createdGame.addGeneres(generesInstances);
     await createdGame.update({ genres: generesNames });
+
     res
       .status(200)
       .json(await videogame.findOne({ where: { name: req.body.name } }));

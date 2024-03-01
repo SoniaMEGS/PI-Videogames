@@ -35,15 +35,19 @@ export const getVideogameByName = async (name) => {
   }
 };
 
-export const getVideogameGenres = async () => {
-  try {
-    const res = await axios.get(`${API_URL}/genres`);
-    const genres = await res.data;
-    return genres;
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
+export const getVideogameGenres = () => {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`${API_URL}/genres`)
+      .then((res) => {
+        const genres = res.data;
+        resolve(genres);
+      })
+      .catch((error) => {
+        console.error(error);
+        reject([]);
+      });
+  });
 };
 
 export const createVideogame = async (videogame) => {

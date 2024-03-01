@@ -7,6 +7,7 @@ const CardDetail = ({ videogameDetails }) => {
     background_image,
     platforms,
     description,
+    description_raw,
     released,
     rating,
     genres,
@@ -56,7 +57,7 @@ const CardDetail = ({ videogameDetails }) => {
         <article className="cardDetailContainer__description">
           <p className="cardDetailContainer_description-d">
             <span>Description: </span>
-            {description}
+            {isNaN(id) ? description : description_raw}
           </p>
         </article>
       </div>

@@ -9,7 +9,9 @@ const useGenres = () => {
       const genres = await getVideogameGenres();
       //console.log(genres);
       if (genres.length) {
-        const allGenres = genres?.map((element) => element?.name);
+        const allGenres = genres
+          ?.map((element) => element?.name)
+          .sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
         setGenresList(allGenres);
       } else {
         console.log("ERROR");

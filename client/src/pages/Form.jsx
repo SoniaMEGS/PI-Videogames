@@ -211,6 +211,9 @@ const Form = () => {
             ))}
           </div>
         </label>
+        <p className="newVideogameForm_note">
+          All fields are mandatory, to enable the create button.
+        </p>
         <div className="buttonContainer">
           <button
             className="newVideogameForm_button"
