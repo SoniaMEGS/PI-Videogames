@@ -7,27 +7,31 @@ function validations({ name, image, description, released, rating }) {
     /^(19[5-9]\d|20\d{2})\/(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])$/;
   const regexRating = /^(?:[0-4](?:\.\d{2})?|5)$/;
   if (!regexText.test(name)) {
-    errors.name = "Debe iniciar con mayuscula.";
+    errors.name = "It must start with a capital letter.";
+  }
+  if (name.length > 15) {
+    errors.name = "Must be less than 15 characters";
   }
   //--
   if (!regexImage.test(image)) {
-    errors.image = "Debe ser el link de una imagen";
+    errors.image = "It must be the link of an image";
   }
   //--
   if (!regexText.test(description)) {
-    errors.description = "Debe iniciar con mayuscula.";
+    errors.description = "It must start with a capital letter.";
   }
   if (description.length < 50) {
-    errors.description = "Debe tener almenos 50 caracteres.";
+    errors.description = "Must be at least 50 characters.";
   }
   //--
   if (!regexReleased.test(released)) {
-    errors.released = "Debe ser una fecha en el ordern año, mes, dia.";
+    errors.released =
+      "It must be a date in the order year, month, day. And the year must be greater than 1950.";
   }
   //--
   if (!regexRating.test(rating)) {
     errors.rating =
-      "El primer dígito puede ser cualquier número del 0 al 5 y si hay decimales, deben ser dos.";
+      "The first digit can be any number from 0 to 5 and if there are decimals, there must be two.";
   }
   return errors;
 }

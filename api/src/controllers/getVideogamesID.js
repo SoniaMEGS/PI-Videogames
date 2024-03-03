@@ -1,5 +1,4 @@
 require("dotenv").config();
-const { Op } = require("sequelize");
 const { URL, API_KEY } = process.env;
 const { videogame } = require("../db");
 const axios = require("axios");
@@ -13,8 +12,6 @@ async function getVideogameID(req, res) {
       const { data } = await axios(url);
       res.status(200).json(data);
     } else {
-      console.log("estoy dentro hp");
-      console.log(id);
       const game = await videogame.findOne({
         where: {
           id: id,

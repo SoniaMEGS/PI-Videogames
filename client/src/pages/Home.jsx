@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { getVideogame } from "../api/index";
 import { setVideogames, setLoading } from "../redux/actions.js";
 import Loader from "../components/Loader.jsx";

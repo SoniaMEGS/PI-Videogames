@@ -19,6 +19,6 @@ generes.belongsToMany(videogame, { through: "genres_videogame" });
 
 module.exports = {
   videogame,
-  generes, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize, // para importart la conexión { conn } = require('./db.js');
+  generes,
+  conn: sequelize,
 };
