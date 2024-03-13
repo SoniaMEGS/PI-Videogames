@@ -20,6 +20,8 @@ server.use(
       "http://127.0.0.1:3000",
       "http://127.0.0.1:5173",
       "https://main--megs-videogames.netlify.app",
+      "https://megs-videogames.netlify.app",
+      "https://*.netlify.app",
     ],
     credentials: true,
   })
@@ -34,6 +36,8 @@ server.use((req, res, next) => {
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
     "https://main--megs-videogames.netlify.app",
+    "https://megs-videogames.netlify.app",
+    "https://*.netlify.app",
   ];
 
   const origin = req.headers.origin;
