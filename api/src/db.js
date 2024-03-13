@@ -5,7 +5,7 @@ const Videogame = require("./models/Videogame");
 const Generes = require("./models/Genres");
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?ssl=true`,
   { logging: console.log("Database connected..."), native: false }
 );
 
